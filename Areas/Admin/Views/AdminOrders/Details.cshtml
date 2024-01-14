@@ -1,0 +1,134 @@
+﻿@model ECommerceShop.Models.Order
+
+@{
+    ViewData["Title"] = "Xem đơn hàng";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    List<OrderDetail> Chitietdonhang = ViewBag.ChiTiet;
+}
+
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <div id="invoice" class="p-h-30">
+                <div class="m-t-15 lh-2">
+                    <div class="inline-block">
+                        
+                    </div>
+                    <div class="float-right">
+                        <h2>Hoá đơn</h2>
+                    </div>
+                    <div class="row m-t-20 lh-2">
+                        <div class="col-sm-7">
+                            <address class="p-l-10">
+                                <span class="font-weight-semibold text-dark">@Model.Customer.FullName</span><br>
+                                <span>@Model.Customer.Address</span><br>
+                                <abbr class="text-dark" title="Phone">Phone: @Model.Customer.Phone</abbr>
+                            </address>
+                        </div>
+                        <div class="col-sm-5">
+                            <div class="m-t-80">
+                                <div class="text-dark text-uppercase d-inline-block">
+                                    <span class="font-weight-semibold text-dark">ID :</span>
+                                </div>
+                                <div class="float-right">#@Model.OrderId</div>
+                            </div>
+                            <div class="mt-1">
+                                <div class="text-dark text-uppercase d-inline-block">
+                                    <span class="font-weight-semibold text-dark">Order Date :</span>
+                                </div>
+                                <div class="float-right">@Model.OrderDate</div>
+                            </div>
+                            
+                            <div class="mt-1">
+                                <div class="text-dark text-uppercase d-inline-block">
+                                    <span class="font-weight-semibold text-dark">Ship Date :</span>
+                                </div>
+                                <div class="float-right">@Model.ShipDate</div>
+                            </div>
+                            <div class="mt-1">
+                                <div class="text-dark text-uppercase d-inline-block">
+                                    <span class="font-weight-semibold text-dark">Status :</span>
+                                </div>
+                                <div class="float-right">@Model.TransactStatus.Status</div>
+                            </div>
+                            <div class="mt-1">
+                                <div class="text-dark text-uppercase d-inline-block">
+                                    <span class="font-weight-semibold text-dark">Paid :</span>
+                                </div>
+                                <div class="float-right">
+                                    @if (@Model.Paid == true)
+                                    {
+                                        <p>Đơn hàng đã trả tiền</p>
+                                    }
+                                    else
+                                    {
+                                        <p>Đơn hàng chưa được trả tiền</p>
+                                    }
+                                </div>
+                            </div>
+                            <div class="mt-1">
+                                <div class="text-dark text-uppercase d-inline-block">
+                                    <span class="font-weight-semibold text-dark">Status :</span>
+                                </div>
+                                <div class="float-right">
+                                    @if (@Model.Status == true)
+                                    {
+                                        <p>Đơn hàng đã được ẩn</p>
+                                    }
+                                    else
+                                    {
+                                        <p>Đơn hàng đang hiển thị</p>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-t-20">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Items</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Chitietdonhang != null && Chitietdonhang.Count() > 0)
+                                {
+                                    int i = 1;
+                                    @foreach (var item in Chitietdonhang)
+                                    {
+                                        <tr>
+                                            <th>@i</th>
+                                            <td>@item.Product.ProductName</td>
+                                            <td>@item.Amount</td>
+                                            <td>@item.Price.Value.ToString("#,##0")đ</td>
+                                            <td>@item.TotalMoney.ToString("#,##0")đ</td>
+                                            
+                                        </tr>
+                                        i++;
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row m-t-30 lh-1-8">
+                        <div class="col-sm-12">
+                            <div class="float-right text-right">
+                                <h3><span class="font-weight-semibold text-dark">Total :</span> @Model.TotalMoney.Value.ToString("#,##0")đ</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.OrderId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

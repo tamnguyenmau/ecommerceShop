@@ -1,0 +1,72 @@
+﻿@{
+    ViewData["Title"] = "liên hệ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="shipping-area section-space-y-axis-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="shipping-item">
+                    <div class="shipping-img">
+                        <img src="assets/images/shipping/icon/plane.png" alt="Shipping Icon">
+                    </div>
+                    <div class="shipping-content">
+                        <h5 class="title">Miễn phí vận chuyển</h5>
+                        <p class="short-desc mb-0">Free Home Delivery Offer</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 pt-6 pt-md-0">
+                <div class="shipping-item">
+                    <div class="shipping-img">
+                        <img src="assets/images/shipping/icon/earphones.png" alt="Shipping Icon">
+                    </div>
+                    <div class="shipping-content">
+                        <h5 class="title">Tổng đài online</h5>
+                        <p class="short-desc mb-0">24/7 Online Support Provide</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 pt-6 pt-lg-0">
+                <div class="shipping-item">
+                    <div class="shipping-img">
+                        <img src="assets/images/shipping/icon/shield.png" alt="Shipping Icon">
+                    </div>
+                    <div class="shipping-content">
+                        <h5 class="title">Thanh toán an toàn</h5>
+                        <p class="short-desc mb-0">Fully Secure Payment System</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Shipping Area End Here -->
+
+<div class="contact-with-map">
+    <div class="contact-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7834.159425854867!2d106.7124775!3d10.9573512!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d751e024b99d%3A0x20b3f9b4c8fdc732!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBLaW5oIHThur8gLSBL4bu5IHRodeG6rXQgQsOsbmggRMawxqFuZw!5e0!3m2!1svi!2s!4v1704906810387!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <div class="contact-form-area section-space-bottom-100">
+        <div class="container">
+            <div class="contact-form-wrap">
+                <form id="contact-form" class="contact-form" >
+                    <h4 class="contact-form-title pb-2 mb-7">Send Us a Massage</h4>
+                    <div class="form-field">
+                        <input type="text" name="con_name" id="con_name" placeholder="Name*" class="input-field">
+                    </div>
+                    <div class="form-field mt-6">
+                        <input type="text" name="con_email" id="con_email" placeholder="Email*" class="input-field">
+                    </div>
+                    <div class="form-field mt-6">
+                        <textarea name="con_message" id="con_message" placeholder="Message" class="textarea-field"></textarea>
+                    </div>
+                    <div class="button-wrap mt-8">
+                        <button type="submit" value="submit" class="btn btn btn-custom-size lg-size btn-primary btn-secondary-hover rounded-0" name="submit">Post Message</button>
+                        <p class="form-messege mt-5 mb-0"></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

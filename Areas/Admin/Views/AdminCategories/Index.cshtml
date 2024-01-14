@@ -1,0 +1,91 @@
+﻿@model IEnumerable<ECommerceShop.Models.Category>
+
+@{
+    ViewData["Title"] = "Danh mục sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-header">
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-area="Admin" asp-action="Index" asp-controller="Home" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+            <span class="breadcrumb-item active">Danh mục sản phẩm </span>
+        </nav>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <div class="row m-b-30">
+            <div class="col-lg-8">
+                <div class="d-md-flex">
+                </div>
+            </div>
+            <div class="col-lg-4 text-right">
+                <a asp-action="Create" class="btn btn-primary">
+                    <i class="anticon anticon-plus-circle m-r-5"></i>
+                    <span>Thêm mới</span>
+                </a>
+                </button>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table id="data-table" class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="records_table">
+                    @if (Model != null)
+                    {
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td>
+                                    @item.CatId
+                                </td>
+                                <td>
+                                    <h6 class="m-b-0 m-l-10">@item.CatName</h6>
+                                </td>
+                                <td>
+                                    @if (item.Status == true)
+                                    {
+                                        <div class="d-flex align-items-center">
+                                            <div class="badge badge-success badge-dot m-r-10"></div>
+                                            <div>Active</div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="d-flex align-items-center">
+                                            <div class="badge badge-danger badge-dot m-r-10"></div>
+                                            <div>Block</div>
+                                        </div>
+                                    }
+                                </td>
+
+
+                                <td class="text-right">
+
+                                    <a asp-action="Edit" asp-route-id="@item.CatId" class="btn btn-primary btn-tone m-r-5">Edit</a>
+                                    <a asp-action="Details" asp-route-id="@item.CatId" class="btn btn-success btn-tone m-r-5">Details</a>
+                                    <a asp-action="Delete" asp-route-id="@item.CatId" class="btn btn-danger btn-tone m-r-5">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+
+            </table>
+            @* <div aria-label="Page navigation example">
+            <ul class="pagination">
+            <pager class="pager-container" list="@Model" asp-area="Admin" asp-route-CatID="@ViewBag.CurrentCateID" asp-controller="AdminProducts" asp-action="Index" />
+            </ul>
+            </div> *@
+        </div>
+    </div>
+</div>

@@ -1,0 +1,169 @@
+﻿@using PagedList.Core.Mvc
+@model PagedList.Core.IPagedList<ECommerceShop.Models.Product>
+
+@{
+    int currentPage = ViewBag.CurrentPage;
+    ViewData["Title"] = "Danh sách sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!-- Content Wrapper START -->
+<div class="page-header">
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-area="Admin" asp-action="Index" asp-controller="Home" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+            <span class="breadcrumb-item active">Danh sách sản phẩm : page @currentPage</span>
+        </nav>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <div class="row m-b-30">
+            <div class="col-lg-8">
+                <div class="d-md-flex">
+                    <div class="m-b-10 m-r-15">
+                        <div class="input-affix m-b-10">
+                            <i class="prefix-icon anticon anticon-search"></i>
+                            <input id="keyword" name="keyword" type="text" class="form-control" placeholder="Search">
+                        </div>
+                    </div>
+                    <div class="m-b-10 m-r-15">
+                        <select class="custom-select" id="txtCatID" name="txtCatID" style="min-width: 250px;" asp-items="ViewBag.Category">
+                            <option selected>Danh mục sản phẩm</option>
+                            <option value="0">Chọn tất cả</option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-4 text-right">
+                <a asp-action="Create" class="btn btn-primary">
+                    <i class="anticon anticon-plus-circle m-r-5"></i>
+                    <span>Thêm mới</span>
+                </a>
+                </button>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table id="data-table" class="table">
+                <thead>
+                    <tr>
+
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Discount</th>
+                        <th>Category</th>
+                        <th>UnitsInStock</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="records_table">
+                    @if (Model != null)
+                    {
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td>
+                                    @item.ProductId
+                                </td>
+                                <td>
+                                    <div class="d-flex flex-column align-items-center">
+                                        <h6 class="m-b-0 m-l-10">@item.ProductName</h6>
+                                        <img class="img-fluid rounded" src="/images/products/@item.Thumb" style="max-width: 60px" alt="">
+                                    </div>
+                                </td>
+                                <td>@item.Price.Value.ToString("#,##0") đ</td>
+                                <td>@item.Discount</td>
+                                <td>@item.Cat.CatName</td>
+                                <td>@item.UnitslnStock</td>
+                                <td>
+                                    @if (item.Status == true)
+                                    {
+                                        <div class="d-flex align-items-center">
+                                            <div class="badge badge-success badge-dot m-r-10"></div>
+                                            <div>Active</div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="d-flex align-items-center">
+                                            <div class="badge badge-danger badge-dot m-r-10"></div>
+                                            <div>Block</div>
+                                        </div>
+                                    }
+                                </td>
+
+
+                                <td class="text-right">
+
+                                    <a asp-action="Edit" asp-route-id="@item.ProductId" class="btn btn-primary btn-tone m-r-5">Edit</a>
+                                    <a asp-action="Details" asp-route-id="@item.ProductId" class="btn btn-success btn-tone m-r-5">Details</a>
+                                    <a asp-action="Delete" asp-route-id="@item.ProductId" class="btn btn-danger btn-tone m-r-5">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+
+            </table>
+            <div aria-label="Page navigation example">
+                <ul class="pagination">
+                    <pager class="pager-container" list="@Model" asp-area="Admin" asp-route-CatID="@ViewBag.CurrentCateID" asp-controller="AdminProducts" asp-action="Index" />
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Content Wrapper END -->
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            jQuery('#txtCatID').change(function () {
+                var catID = jQuery(this).children(":selected").attr("value");
+                catID = parseFloat(catID);
+                $('#txtCatID option')
+                    .removeAttr('selected');
+                $("#txtCatID > [value=" + catID + "]").attr("selected", "true");
+
+                $.ajax({
+                    url: '/Admin/AdminProducts/Filter',
+                    datatype: "json",
+                    type: "GET",
+                    data: {
+                        CatID: catID
+                    },
+                    async: true,
+                    success: function (results) {
+                        if (results.status == "success") {
+                            window.location.href = results.redirectUrl;
+                        }
+                    },
+                    error: function (xhr) {
+                        alert('error');
+                    }
+                });
+            })
+            $("#keyword").keyup(function () {
+                var strkeyword = $('#keyword').val();
+                $.ajax({
+                    url: '/Admin/Search/FindProduct/',
+                    datatype: "json",
+                    type: "POST",
+                    data: { keyword: strkeyword },
+                    async: true,
+                    success: function (results) {
+                        $("#records_table").html("");
+                        $("#records_table").html(results);
+                    },
+                    error: function (xhr) {
+                        alert('error');
+                    }
+                });
+            });
+        });
+    </script>
+}
+

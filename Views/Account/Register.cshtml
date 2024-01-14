@@ -1,0 +1,68 @@
+﻿@model ECommerceShop.Req.Register
+
+@{
+    ViewData["Title"] = "Đăng ký tài khoản";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<div class="login-register-area section-space-y-axis-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+            </div>
+            <div class="col-lg-6 pt-10 pt-lg-0">
+                <form asp-action="Register">
+                    <div class="login-form">
+                        <h4 class="login-title">Register</h4>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Full Name</label>
+                                <input asp-for="FullName" type="text" placeholder="First Name">
+                                
+                            </div>
+                            <div class="col-md-12">
+                                <label>Birth Day</label>
+                                <input asp-for="BirthDay" type="date">
+                                
+
+                            </div>
+                            <div class="col-md-12">
+                                <label>Address</label>
+                                <input asp-for="Address" type="text" />
+                                
+
+                            </div>
+                            <div class="col-md-12">
+                                <label>Phone</label>
+                                <input asp-for="Phone" type="tel" />
+                               
+
+                            </div>
+                            <div class="col-md-12">
+                                <label>Email Address*</label>
+                                <input asp-for="Email" type="email" placeholder="Email Address">
+                                <span asp-validation-for="Email" class="text-danger"></span>
+
+                            </div>
+                            <div class="col-md-6">
+                                <label>Password</label>
+                                <input asp-for="Password" type="password" placeholder="Password">
+                                <span asp-validation-for="Password" class="text-danger"></span>
+
+                            </div>
+                            <div class="col-md-6">
+                                <label>Confirm Password</label>
+                                <input asp-for="ConfirmPassword" type="password" placeholder="Confirm Password">
+                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-custom-size lg-size btn-secondary btn-primary-hover rounded-0">Register</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

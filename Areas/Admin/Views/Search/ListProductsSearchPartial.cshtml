@@ -1,0 +1,47 @@
+﻿
+@model List<Product>
+
+@if (Model != null)
+{
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @item.ProductId
+            </td>
+            <td>
+                <div class="d-flex flex-column align-items-center">
+                    <h6 class="m-b-0 m-l-10">@item.ProductName</h6>
+                    <img class="img-fluid rounded" src="/images/products/@item.Thumb" style="max-width: 60px" alt="">
+                </div>
+            </td>
+            <td>@item.Price.Value.ToString("#,##0") đ</td>
+            <td>@item.Discount</td>
+            <td>@item.Cat.CatName</td>
+            <td>@item.UnitslnStock</td>
+            <td>
+                @if (item.UnitslnStock.Value > 0)
+                {
+                    <div class="d-flex align-items-center">
+                        <div class="badge badge-success badge-dot m-r-10"></div>
+                        <div>In Stock</div>
+                    </div>
+                }
+                else
+                {
+                    <div class="d-flex align-items-center">
+                        <div class="badge badge-danger badge-dot m-r-10"></div>
+                        <div>Out Stock</div>
+                    </div>
+                }
+            </td>
+            <td class="text-right">
+
+                <a asp-action="Edit" asp-controller="AdminProducts" asp-route-id="@item.ProductId" class="btn btn-primary btn-tone m-r-5">Edit</a>
+                <a asp-action="Details" asp-controller="AdminProducts" asp-route-id="@item.ProductId" class="btn btn-success btn-tone m-r-5">Details</a>
+                <a asp-action="Delete" asp-controller="AdminProducts" asp-route-id="@item.ProductId" class="btn btn-danger btn-tone m-r-5">Delete</a>
+            </td>
+        </tr>
+    }
+}

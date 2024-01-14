@@ -1,0 +1,79 @@
+﻿@{
+    Layout = null;
+}
+@model ECommerceShop.Areas.Admin.Models.LoginAdmin
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Đăng nhập</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/assets/images/logo/1146805_122148-OQK6HA-101 copy.png">
+
+    <!-- page css -->
+    <!-- Core css -->
+    <link href="/AdminAssets/assets/css/app.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="app">
+        <div class="container-fluid p-0 h-100">
+            <div class="row no-gutters h-100 full-height">
+                <div class="col-lg-12 bg-light">
+                    <div class="container h-100">
+                        <div class="row no-gutters h-100 align-items-center">
+                            <div class="col-md-8 col-lg-7 col-xl-6 mx-auto border p-30 border-radius-10 bg-white">
+                                <h2>Đăng nhập quản trị</h2>
+                                <p class="m-b-30">
+                                    Nhập thông tin xác thực của bạn để có quyền truy cập
+                                </p>
+                                <form asp-action="Login" asp-area="Admin" asp-controller="AdminAccounts" method="post">
+                                    <div class="form-group">
+                                        <label class="font-weight-semibold" for="userName">Email:</label>
+                                        <div class="input-affix">
+                                            <i class="prefix-icon anticon anticon-user"></i>
+                                            <input type="text" class="form-control" asp-for="Email" placeholder="Email">
+
+                                        </div>
+                                            <span asp-validation-for="Email" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">    
+                                        
+                                        <label class="font-weight-semibold" for="password">Password:</label>
+                                        <div class="input-affix m-b-10">
+                                            <i class="prefix-icon anticon anticon-lock"></i>
+                                            <input type="password" class="form-control" asp-for="Password" id="password" placeholder="Password">
+
+                                        </div>
+                                            <span asp-validation-for="Password" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                           
+                                            <button class="btn btn-primary">Sign In</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Core Vendors JS -->
+    <script src="/AdminAssets/assets/js/vendors.min.js"></script>
+
+    <!-- page js -->
+    <!-- Core JS -->
+    <script src="/AdminAssets/assets/js/app.min.js"></script>
+
+</body>
+
+</html>

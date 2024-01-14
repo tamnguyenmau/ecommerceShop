@@ -1,0 +1,41 @@
+﻿@model ECommerceShop.Req.Login
+
+@{
+    ViewData["Title"] = "Đăng nhập tài khoản";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<div class="login-register-area section-space-y-axis-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <form asp-action="Login">
+                    <div class="login-form">
+                        <h4 class="login-title">Login</h4>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <label>Email Address*</label>
+                                <input asp-for="Email" type="text" placeholder="Email">
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <div class="col-lg-12">
+                                <label>Password</label>
+                                <input asp-for="Password" type="password" placeholder="Password">
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-4 pt-1 mt-md-0">
+                                <div class="forgotton-password_info">
+                                    <a href="#"> Forgotten pasward?</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 pt-5">
+                                <button class="btn btn-custom-size lg-size btn-secondary btn-primary-hover rounded-0">Login</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+</div>

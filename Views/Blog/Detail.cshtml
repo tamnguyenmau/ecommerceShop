@@ -1,0 +1,270 @@
+﻿@model Article
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Begin Main Content Area -->
+<main class="main-content">
+    <div class="blog-area section-space-y-axis-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 order-2 pt-10 pt-lg-0">
+                    <div class="sidebar-area">
+                        <div class="widgets-searchbox mb-9">
+                            <form id="widgets-searchbox" action="#">
+                                <input class="input-field" type="text" placeholder="Search">
+                                <button class="widgets-searchbox-btn" type="submit">
+                                    <i class="pe-7s-search"></i>
+                                </button>
+                            </form>
+                        </div>
+                        <div class="widgets-area mb-9">
+                            <h2 class="widgets-title mb-5">Category</h2>
+                            <div class="widgets-item">
+                                <ul class="widgets-category">
+                                    <li>
+                                        <a href="blog-detail-left-sidebar.html">
+                                            Natural Products
+                                            <span>7</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="blog-detail-left-sidebar.html">
+                                            Cooking Items
+                                            <span>3</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="blog-detail-left-sidebar.html">
+                                            Firm Food
+                                            <span>4</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="blog-detail-left-sidebar.html">
+                                            Vegetable & Oil
+                                            <span>6</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="widgets-area mb-9">
+                            <h2 class="widgets-title mb-5">Top Rated Products</h2>
+                            <div class="widgets-item">
+                                <div class="swiper-container widgets-list-slider style-2">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <div class="product-list-item">
+                                                <div class="product-img img-zoom-effect">
+                                                    <a href="single-product.html">
+                                                        <img class="img-full" src="assets/images/blog/small-size/1-1-86x86.jpg" alt="Blog Images">
+                                                    </a>
+                                                </div>
+                                                <div class="product-content">
+                                                    <h5 class="title mb-3">
+                                                        <a href="blog-detail-left-sidebar.html">Lorem ipsum dolor sit amet consecte</a>
+                                                    </h5>
+                                                    <div class="blog-meta text-manatee pb-1">
+                                                        <ul>
+                                                            <li class="date">May 21, 2021</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="product-list-item">
+                                                <div class="product-img img-zoom-effect">
+                                                    <a href="single-product.html">
+                                                        <img class="img-full" src="assets/images/blog/small-size/1-2-86x86.jpg" alt="Blog Images">
+                                                    </a>
+                                                </div>
+                                                <div class="product-content">
+                                                    <h5 class="title mb-3">
+                                                        <a href="blog-detail-left-sidebar.html">Lorem ipsum dolor sit amet consecte</a>
+                                                    </h5>
+                                                    <div class="blog-meta text-manatee pb-1">
+                                                        <ul>
+                                                            <li class="date">May 21, 2021</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="product-list-item">
+                                                <div class="product-img img-zoom-effect">
+                                                    <a href="single-product.html">
+                                                        <img class="img-full" src="assets/images/blog/small-size/1-3-86x86.jpg" alt="Blog Images">
+                                                    </a>
+                                                </div>
+                                                <div class="product-content">
+                                                    <h5 class="title mb-3">
+                                                        <a href="blog-detail-left-sidebar.html">Lorem ipsum dolor sit amet consecte</a>
+                                                    </h5>
+                                                    <div class="blog-meta text-manatee pb-1">
+                                                        <ul>
+                                                            <li class="date">May 21, 2021</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widgets-area">
+                            <h2 class="widgets-title mb-5">Tag</h2>
+                            <div class="widgets-item">
+                                <ul class="widgets-tags">
+                                    <li>
+                                        <a href="javascript:void(0)">Clothing</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0)">Accessories</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0)">For Men</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0)">Women</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0)">Fashion</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9 order-1">
+                    <div class="blog-detail-item">
+                        <div class="blog-img">
+                            <img class="img-full" src="/images/news/@Model.Thumb" alt="@Model.Title">
+                        </div>
+                        <div class="blog-content text-start pb-0">
+                            <div class="blog-meta text-dim-gray pb-3">
+                                <ul>
+                                    <li class="date"><i class="fa fa-calendar-o me-2"></i>@Model.CreateDate</li>
+                                </ul>
+                            </div>
+                            <h5 class="title mb-4">
+                                <a href="blog-detail-left-sidebar.html">@Model.Title</a>
+                            </h5>
+                            <p class="short-desc mb-4 mb-7">@Model.Description</p>
+                            <div>
+                                @Html.Raw(Model.Content)
+                            </div>
+
+
+                            <div class="tag-wtih-social">
+                                <div class="tag">
+                                    <span class="title text-primary">Tags:</span>
+                                    <ul>
+                                        <li>
+                                            <a href="javascript:void(0)">Furniture,</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)">Electronic,</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)">Fashion</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="social-link">
+                                    <ul>
+                                        <li>
+                                            <a href="javascript:void(0)">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)">
+                                                <i class="fa fa-pinterest-p"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)">
+                                                <i class="fa fa-dribbble"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="blog-comment pt-10">
+                                <h4 class="heading mb-7">02 Comments</h4>
+                                <div class="blog-comment-item mb-8">
+                                    <div class="blog-comment-img">
+                                        <img src="assets/images/avatar/1.jpg" alt="Avatar">
+                                    </div>
+                                    <div class="blog-comment-content">
+                                        <div class="user-meta">
+                                            <span><strong>Aidyn Cody -</strong> Jul 21,2021 at 15 hours ago</span>
+                                            <a class="btn btn-link hover-white d-none d-md-flex" href="javascript:void(0)">
+                                                <i class="fa fa-reply me-2"></i>
+                                                Reply
+                                            </a>
+                                        </div>
+                                        <span class="user-occupation text-primary">Web Developer</span>
+                                        <p class="user-comment mb-0">Comment example here. Nulla risus lacus, vehicula id mi vitae, auctor accumsan nulla. Sed a dolor sit amrt paremi quam. Lorem In euismod urna ac massa adipiscing interdum.</p>
+                                        <a class="btn btn-link hover-white d-inline-flex d-md-none mt-5" href="javascript:void(0)">
+                                            <i class="fa fa-reply me-2"></i>
+                                            Reply
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="blog-comment-item">
+                                    <div class="blog-comment-img">
+                                        <img src="assets/images/avatar/2.jpg" alt="Avatar">
+                                    </div>
+                                    <div class="blog-comment-content">
+                                        <div class="user-meta">
+                                            <span><strong>Aidyn Cody -</strong> Jul 21,2021 at 15 hours ago</span>
+                                            <a class="btn btn-link hover-white d-none d-md-flex" href="javascript:void(0)">
+                                                <i class="fa fa-reply me-2"></i>
+                                                Reply
+                                            </a>
+                                        </div>
+                                        <span class="user-occupation text-primary">Web Developer</span>
+                                        <p class="user-comment mb-0">Comment example here. Nulla risus lacus, vehicula id mi vitae, auctor accumsan nulla. Sed a dolor sit amrt paremi quam. Lorem In euismod urna ac massa adipiscing interdum.</p>
+                                        <a class="btn btn-link hover-white d-inline-flex d-md-none mt-5" href="javascript:void(0)">
+                                            <i class="fa fa-reply me-2"></i>
+                                            Reply
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="feedback-area section-space-top-55">
+                                <h4 class="heading mb-1">Leave a comment</h4>
+                                <form class="feedback-form pt-8" action="#">
+                                    <div class="group-input">
+                                        <div class="form-field me-md-6 mb-6 mb-md-0">
+                                            <input type="text" name="name" placeholder="Your Name*" class="input-field">
+                                        </div>
+                                        <div class="form-field me-md-6 mb-6 mb-md-0">
+                                            <input type="text" name="email" placeholder="Your Email*" class="input-field">
+                                        </div>
+                                        <div class="form-field">
+                                            <input type="text" name="number" placeholder="Phone number" class="input-field">
+                                        </div>
+                                    </div>
+                                    <div class="form-field mt-6">
+                                        <textarea name="message" placeholder="Message" class="textarea-field"></textarea>
+                                    </div>
+                                    <div class="button-wrap mt-8">
+                                        <button type="submit" value="submit" class="btn btn-custom-size lg-size btn-secondary btn-primary-hover btn-lg rounded-0" name="submit">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- Main Content Area End Here -->

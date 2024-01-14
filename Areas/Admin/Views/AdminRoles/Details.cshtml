@@ -1,0 +1,43 @@
+﻿@model ECommerceShop.Models.Role
+
+@{
+    ViewData["Title"] = "Chi tiết quyền truy cập";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<nav class="breadcrumb breadcrumb-dash">
+    <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+    <a class="breadcrumb-item" asp-action="Index" asp-controller="AdminRoles" asp-area="Admin">Danh sách quyền truy cập</a>
+    <span class="breadcrumb-item active">Thông tin quyền truy cập</span>
+</nav>
+
+<h1>Details</h1>
+
+<div>
+    <h4>Role</h4>
+    <hr />
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Role Name</th>
+                    <th scope="col">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">@Model.RoleId</th>
+                    <td>@Model.RoleName</td>
+                    <td>@Model.Description</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.RoleId" class="btn btn-primary btn-tone m-r-5">Edit</a>
+    <a asp-action="Index" class="btn btn-danger btn-tone m-r-5">Back to List</a>
+</div>

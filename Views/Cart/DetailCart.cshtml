@@ -1,0 +1,27 @@
+﻿@model List<ECommerceShop.Models.OrderDetail>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <h4 class="small-title">Sản phẩm</h4>
+        <tbody>
+            <tr>
+                <th>#</th>
+                <th>Tên sản phẩm</th>
+                <th>Số lượng</th>
+                <th>Giá sản phẩm</th>
+                <th>TỔNG TIỀN</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.OrderId</td>
+                    <td>@item.Product.ProductName</td>
+                    <td>@item.Amount</td>
+                    <td>@item.Product.Price.Value.ToString("#,##0") đ</td>
+                    <td>@item.TotalMoney.ToString("#,##0") đ</td>
+                   
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

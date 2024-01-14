@@ -1,0 +1,39 @@
+﻿
+@model ECommerceShop.Areas.Admin.Models.EditProfile
+
+<form asp-controller="AdminAccounts" method="post" asp-action="EditProfile" enctype="multipart/form-data">
+    <div class="page-header no-gutters has-tab">
+        <div class="d-md-flex m-b-15 align-items-center justify-content-between">
+
+            <div class="m-b-15">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+        
+    </div>
+    <div class="tab-content m-t-15">
+        <div class="tab-pane fade show active" id="product-edit-basic">
+            <div class="card">
+                <div class="card-body">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="AccountId" />
+                    <div class="form-group">
+                        <label class="font-weight-semibold" for="productName">Họ tên</label>
+                        <input type="text" class="form-control" asp-for="FullName" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label class="font-weight-semibold" for="productName">Số điện thoại</label>
+                        <input type="text" class="form-control" asp-for="Phone" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label class="font-weight-semibold" for="productBrand">Ảnh đại diện</label>
+                        <input name="thumb" type="file" class="form-control" asp-for="Avatar">
+                    </div>
+                    
+
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</form>

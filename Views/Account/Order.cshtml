@@ -1,0 +1,69 @@
+﻿@model List<Order>
+@{
+    List<ECommerceShop.Req.CartItem> carts = ViewBag.GioHang;
+
+}
+@if (Model!=null && Model.Count()>0)
+{
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <tbody>
+                <tr>
+                    <th>MÃ ĐƠN HÀNG</th>
+                    <th>NGÀY TẠO</th>
+                    <th>NGÀY GIAO</th>
+                    <th>TÌNH TRẠNG</th>
+                    <th>TỔNG TIỀN</th>
+                    <th></th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>@item.OrderId</td>
+                    <td>@item.OrderDate</td>
+                    <td>@item.ShipDate</td>
+                    <td>@item.TransactStatusId</td>
+                    <td>@item.TotalMoney.Value.ToString("#,##0") đ</td>
+                        <td>
+                            <a class="xemdonhang" data-madonhang="@item.OrderId">Xem Đơn Hàng</a>
+                        </td>
+                </tr> 
+                }
+            </tbody>
+        </table>
+        <br />
+        <br />
+        <br />
+        <hr/>
+        <div id="records_table">
+
+        </div>
+    </div>
+}
+else
+{
+    <p>Chưa có đơn hàng</p>
+}
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $(".xemdonhang").click(function () {
+                var madonhang = $(this).attr("data-madonhang");
+                $.ajax({
+                    url: '/Cart/Details',
+                    dataType: "Json",
+                    type: "POST",
+                    data: { id: madonhang },
+                    async: true,
+                    success: function (result) {
+                        $("#record_table").html("");
+                        $("#record_table").html(result);
+                    },
+                    error: function (xhr) {
+                        alert("error");
+                    }
+                });
+            });
+        })
+    </script>
+}

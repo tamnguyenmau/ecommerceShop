@@ -1,0 +1,104 @@
+﻿@model IEnumerable<ECommerceShop.Models.Article>
+@using PagedList.Core.Mvc
+
+@{
+    ViewData["Title"] = "Tin đăng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int PageCurrent = ViewBag.CurrentPage;
+    int PageNext = PageCurrent + 1;
+}
+
+
+<!-- Begin Main Content Area -->
+<main class="main-content">
+    <div class="breadcrumb-area breadcrumb-height" data-bg-image="" style="height:200px">
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-item">
+                        <h2 class="breadcrumb-heading">Tin tức</h2>
+                        <ul>
+                            <li>
+                                <a asp-route="">Trang chủ <i class="pe-7s-angle-right"></i></a>
+                            </li>
+                            <li>Tin tức</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="blog-area blog-column-2 ">
+        <div class="container">
+            <div class="row">
+                @if (Model != null && Model.Count() > 0)
+                {
+                    foreach (var item in Model)
+                    {
+                        string url = $"/Blog/{item.Alias}-{item.ArticleId}.html";
+                        <div class="col-md-6 my-3" style="max-height:660px;">
+                            <div class="blog-item">
+                                <div class="blog-img img-zoom-effect">
+                                    <a href="@url">
+                                        <img class="img-full" src="/images/news/@item.Thumb" alt="@item.Title">
+                                    </a>
+                                </div>
+                                <div class="blog-content">
+                                    <div class="blog-meta text-dim-gray pb-3">
+                                        <ul>
+                                            <li class="date"><i class="fa fa-calendar-o me-2"></i>@item.CreateDate</li>
+                                        </ul>
+                                    </div>
+                                    <h5 class="title mb-4">
+                                        <a href="@url">@item.Title</a>
+                                    </h5>
+                                    <p class="short-desc mb-5">@item.Description</p>
+                                    <div class="button-wrap">
+                                        <a class="btn btn-custom-size lg-size btn-dark rounded-0" href="@url">Xem thêm</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+
+                <div aria-label="Page navigation example">
+                    <ul class="pagination">
+                    </ul>
+                </div>
+                <div class="col-lg-12">
+                    <div class="pagination-area pt-10">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-center">
+                                @if (PageCurrent > 1)
+                                {
+                                    <li class="page-item">
+                                        <a class="page-link" href="/Blog?page=@(PageCurrent-1)" aria-label="Previous">
+                                            <span class="fa fa-chevron-left"></span>
+                                        </a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="page-item">
+                                        <a class="page-link" href="/Blog" aria-label="Previous">
+                                            <span class="fa fa-chevron-left"></span>
+                                        </a>
+                                    </li>
+                                }
+                                <li class="page-item active"><a class="page-link" href="/Blog?page=@PageCurrent">@PageCurrent</a></li>
+                                <li class="page-item"><a class="page-link" href="/Blog?page=@PageNext">@PageNext</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="/Blog?page=@PageNext" aria-label="Next">
+                                        <span class="fa fa-chevron-right"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- Main Content Area End Here -->
